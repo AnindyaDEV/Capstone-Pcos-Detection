@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS Health Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="{{ url_for('static', filename='css/chatbot.css') }}" rel="stylesheet">
+</head>
+<body>
+      {% include 'partials/navbar.html' %}
+  {% include 'partials/chatbot-mascot.html' %}
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>🌸 PCOS Health Assistant</h2>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages will appear here -->
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask about PCOS, nutrition, or fitness...">
+            <button id="send-btn">Send</button>
+        </div>
+        
+        <div class="quick-replies" id="quick-replies">
+            <!-- Option buttons will appear here -->
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/chatbot.js"></script>
+
+</body>
+</html>

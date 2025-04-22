@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultrasound Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    .upload-area {
+      border: 2px dashed #dee2e6;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #f8f9fa;
+    }
+    .upload-area:hover {
+      border-color: #0d6efd;
+      background-color: #e9f0ff;
+    }
+    .preview-image {
+      max-height: 300px;
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      display: none;
+    }
+    .result-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    .show-result {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .service-card {
+      transition: all 0.3s;
+      cursor: pointer;
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .services-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  {% include 'partials/navbar.html' %}
+  {% include 'partials/chatbot-mascot.html' %}
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="bi bi-activity me-2"></i>Ultrasound Analysis</h3>
+          </div>
+          <div class="card-body">
+            <p class="text-muted mb-4">Upload an ultrasound image to analyze and get predictions about potential findings.</p>
+            
+            <form id="uploadForm" enctype="multipart/form-data">
+              <div class="mb-4">
+                <div id="uploadContainer" class="upload-area">
+                  <i class="bi bi-cloud-arrow-up fs-1 text-primary"></i>
+                  <h5 class="my-3">Drag & Drop your ultrasound image here</h5>
+                  <p class="text-muted small">or click to browse files</p>
+                  <input type="file" class="form-control d-none" id="ultrasound_image" name="ultrasound_image" accept="image/*" required>
+                  <img id="imagePreview" class="preview-image img-fluid" alt="Preview">
+                </div>
+              </div>
+              
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="reset" class="btn btn-outline-secondary me-md-2">
+                  <i class="bi bi-x-circle me-1"></i>Clear
+                </button>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                  <i class="bi bi-magic me-1"></i>Analyze Image
+                </button>
+              </div>
+            </form>
+            
+            <div id="loadingIndicator" class="text-center my-4" style="display: none;">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2">Analyzing image, please wait...</p>
+            </div>
+            
+            <div id="result" class="mt-4">
+              <div class="card result-card" id="resultCard">
+                <div class="card-header bg-info text-white">
+                  <h4 class="mb-0"><i class="bi bi-clipboard2-pulse me-2"></i>Analysis Results</h4>
+                </div>
+                <div class="card-body">
+                  <div id="predictionResult"></div>
+                  
+                  <!-- Services Section - Now inside the result card -->
+                  <div id="servicesSection" class="services-section" style="display: none;">
+                    <h5 class="mb-3">Explore More Services</h5>
+                    <div class="row g-3">
+                      <div class="col-md-6 col-lg-3">
+                        <div class="card service-card text-center p-3" onclick="window.location.href='/nutrition';">
+                          <div class="service-icon text-success">
+                            <i class="bi bi-apple"></i>
+                          </div>
+                          <h6>Nutrition</h6>
+                          <p class="small text-muted mb-2">Personalized diet plans</p>
+                          <span class="badge bg-success">Explore</span>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6 col-lg-3">
+                        <div class="card service-card text-center p-3" onclick="window.location.href='/pharmacy';">
+                          <div class="service-icon text-primary">
+                            <i class="bi bi-capsule"></i>
+                          </div>
+                          <h6>Pharmacy</h6>
+                          <p class="small text-muted mb-2">Medication information</p>
+                          <span class="badge bg-primary">Explore</span>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6 col-lg-3">
+                        <div class="card service-card text-center p-3" onclick="window.location.href='/gynecologist';">
+                          <div class="service-icon text-danger">
+                            <i class="bi bi-heart-pulse"></i>
+                          </div>
+                          <h6>Gynecologist</h6>
+                          <p class="small text-muted mb-2">Women's health</p>
+                          <span class="badge bg-danger">Explore</span>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6 col-lg-3">
+                        <div class="card service-card text-center p-3" onclick="window.location.href='/fitness';">
+                          <div class="service-icon text-warning">
+                            <i class="bi bi-activity"></i>
+                          </div>
+                          <h6>Fitness</h6>
+                          <p class="small text-muted mb-2">Workout plans</p>
+                          <span class="badge bg-warning text-dark">Explore</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer small text-muted">
+                  <i class="bi bi-info-circle me-1"></i>This analysis is for informational purposes only.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const uploadContainer = document.getElementById("uploadContainer");
+      const fileInput = document.getElementById("ultrasound_image");
+      const imagePreview = document.getElementById("imagePreview");
+      const uploadForm = document.getElementById("uploadForm");
+      const loadingIndicator = document.getElementById("loadingIndicator");
+      const resultCard = document.getElementById("resultCard");
+      const predictionResult = document.getElementById("predictionResult");
+      const submitBtn = document.getElementById("submitBtn");
+      const servicesSection = document.getElementById("servicesSection");
+      
+      // Handle drag and drop
+      uploadContainer.addEventListener("click", () => fileInput.click());
+      
+      uploadContainer.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadContainer.classList.add("border-primary", "bg-light");
+      });
+      
+      uploadContainer.addEventListener("dragleave", () => {
+        uploadContainer.classList.remove("border-primary", "bg-light");
+      });
+      
+      uploadContainer.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadContainer.classList.remove("border-primary", "bg-light");
+        if (e.dataTransfer.files.length) {
+          fileInput.files = e.dataTransfer.files;
+          previewImage(e.dataTransfer.files[0]);
+        }
+      });
+      
+      fileInput.addEventListener("change", () => {
+        if (fileInput.files.length) {
+          previewImage(fileInput.files[0]);
+        }
+      });
+      
+      function previewImage(file) {
+        if (file.type.match("image.*")) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block";
+            uploadContainer.querySelector("h5").textContent = file.name;
+            uploadContainer.querySelector("p").textContent = `${(file.size / 1024).toFixed(2)} KB`;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+      
+      uploadForm.addEventListener("reset", () => {
+        imagePreview.style.display = "none";
+        imagePreview.src = "";
+        uploadContainer.querySelector("h5").textContent = "Drag & Drop your ultrasound image here";
+        uploadContainer.querySelector("p").textContent = "or click to browse files";
+        resultCard.classList.remove("show-result");
+        servicesSection.style.display = "none";
+      });
+      
+      uploadForm.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        
+        if (!fileInput.files.length) {
+          alert("Please select an image first");
+          return;
+        }
+        
+        // Show loading indicator
+        submitBtn.disabled = true;
+        loadingIndicator.style.display = "block";
+        resultCard.classList.remove("show-result");
+        servicesSection.style.display = "none";
+        
+        try {
+          const formData = new FormData(this);
+          const res = await fetch("/api/predict/ultrasound", {
+            method: "POST",
+            body: formData
+          });
+          
+          if (!res.ok) throw new Error("Network response was not ok");
+          
+          const data = await res.json();
+          
+          // Display results
+          predictionResult.innerHTML = `
+            <div class="alert alert-success">
+              <h5><i class="bi bi-check-circle-fill me-2"></i>Prediction: ${data.prediction}</h5>
+              <hr>
+              <p class="mb-1"><strong>Confidence:</strong> ${data.confidence}</p>
+              ${data.details ? `<p class="mb-1"><strong>Details:</strong> ${data.details}</p>` : ""}
+            </div>
+          `;
+          
+          // Show the services section
+          servicesSection.style.display = "block";
+          resultCard.classList.add("show-result");
+        } catch (error) {
+          predictionResult.innerHTML = `
+            <div class="alert alert-danger">
+              <h5><i class="bi bi-exclamation-triangle-fill me-2"></i>Error</h5>
+              <p>${error.message}</p>
+            </div>
+          `;
+          resultCard.classList.add("show-result");
+        } finally {
+          loadingIndicator.style.display = "none";
+          submitBtn.disabled = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

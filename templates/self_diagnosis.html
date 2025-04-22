@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PCOS Self-Diagnosis</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        padding: 20px 0;
+      }
+
+      .form-container {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+      }
+
+      .step {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .step.active {
+        display: block;
+      }
+
+      h2 {
+        color: #5c6bc0;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      .form-control {
+        border-radius: 8px;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        transition: all 0.3s;
+      }
+
+      .form-control:focus {
+        border-color: #5c6bc0;
+        box-shadow: 0 0 0 0.25rem rgba(92, 107, 192, 0.25);
+      }
+
+      .progress {
+        height: 10px;
+        margin-bottom: 30px;
+        border-radius: 5px;
+      }
+
+      .progress-bar {
+        background-color: #5c6bc0;
+      }
+
+      .btn-primary {
+        background-color: #5c6bc0;
+        border-color: #5c6bc0;
+        padding: 8px 25px;
+        border-radius: 8px;
+        font-weight: 500;
+      }
+
+      .btn-secondary {
+        background-color: #78909c;
+        border-color: #78909c;
+        padding: 8px 25px;
+        border-radius: 8px;
+        font-weight: 500;
+      }
+
+      .btn-success {
+        padding: 8px 25px;
+        border-radius: 8px;
+        font-weight: 500;
+      }
+
+      .result-container {
+        display: none;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .result-title {
+        color: #5c6bc0;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .result-content {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .high-risk {
+        color: #e53935;
+        font-weight: 600;
+      }
+
+      .low-risk {
+        color: #43a047;
+        font-weight: 600;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .step-indicator {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        color: #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .step-circle.active {
+        background: #5c6bc0;
+        color: white;
+      }
+
+      .step-line {
+        flex: 1;
+        height: 2px;
+        background: #e0e0e0;
+        margin: 0 -5px;
+        position: relative;
+        top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'partials/navbar.html' %}
+    {% include 'partials/chatbot-mascot.html' %}
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="form-container">
+            <h2>PCOS Self-Diagnosis Form</h2>
+
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+              <div class="step-circle active">1</div>
+              <div class="step-line"></div>
+              <div class="step-circle">2</div>
+              <div class="step-line"></div>
+              <div class="step-circle">3</div>
+              <div class="step-line"></div>
+              <div class="step-circle">4</div>
+            </div>
+
+            <form id="diagnosisForm">
+              <!-- Personal Info (not submitted to backend) -->
+              <div class="mb-4">
+                <label class="form-label">Your Name (optional)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <!-- Step 1 -->
+              <!-- Step 1: Personal & Basic Health Information -->
+              <div class="step active">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Age (years)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Age_yrs"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Weight (Kg)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Weight_Kg"
+                    step="0.1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">BMI</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="BMI"
+                    step="0.1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Waist (inches)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Waist_inch"
+                    step="0.1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Hip (inches)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Hip_inch"
+                    step="0.1"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Step 2: Reproductive Health -->
+              <div class="step">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Years Since Marriage</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Marraige_Status_Yrs"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">No. of Abortions</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="No_of_aborptions"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Cycle Length (days)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Cycle_length_days"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Cycle Regularity (4=Irregular, 2=Regular)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Cycle_R_I"
+                    min="2"
+                    max="4"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">PRG (ng/mL)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="PRG_ng_mL"
+                    step="0.01"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Step 3: Ovarian Ultrasound -->
+              <div class="step">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Follicle Number (Right Ovary)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Follicle_No_R"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Follicle Number (Left Ovary)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Follicle_No_L"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Avg. Follicle Size (Left) (mm)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Avg_F_size_L_mm"
+                    step="0.1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">AMH (ng/mL)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="AMH_ng_mL"
+                    step="0.01"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Step 4: Symptoms & Lifestyle -->
+              <div class="step">
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Skin Darkening (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Skin_darkening_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Hair Growth (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Hair_growth_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Hair Loss (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Hair_loss_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Pimples (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Pimples_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Weight Gain (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Weight_gain_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-semibold"
+                    >Fast Food Habit (1=Yes, 0=No)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    name="Fast_food_YN"
+                    min="0"
+                    max="1"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-secondary" id="prevBtn">
+                  Previous
+                </button>
+                <button type="button" class="btn btn-primary" id="nextBtn">
+                  Next
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success d-none"
+                  id="submitBtn"
+                >
+                  Get Results
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results Container -->
+          <div class="result-container" id="resultContainer">
+            <h3 class="result-title">Diagnosis Results</h3>
+            <div class="result-content" id="resultContent">
+              <!-- Results will be displayed here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const stepCircles = document.querySelectorAll(".step-circle");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+      const resultContainer = document.getElementById("resultContainer");
+      const resultContent = document.getElementById("resultContent");
+      const userNameInput = document.getElementById("userName");
+
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.remove("active");
+          if (i === index) step.classList.add("active");
+        });
+
+        stepCircles.forEach((circle, i) => {
+          circle.classList.remove("active");
+          if (i <= index) circle.classList.add("active");
+        });
+
+        prevBtn.style.display = index === 0 ? "none" : "inline-block";
+        nextBtn.style.display =
+          index === steps.length - 1 ? "none" : "inline-block";
+        submitBtn.classList.toggle("d-none", index !== steps.length - 1);
+      }
+
+      showStep(currentStep);
+
+      nextBtn.addEventListener("click", () => {
+        // Validate current step before proceeding
+        const currentStepInputs = steps[currentStep].querySelectorAll("input");
+        let isValid = true;
+
+        currentStepInputs.forEach((input) => {
+          if (!input.checkValidity()) {
+            input.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            input.classList.remove("is-invalid");
+          }
+        });
+
+        if (isValid && currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+
+      document
+        .getElementById("diagnosisForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          submitBtn.innerHTML =
+            '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+          submitBtn.disabled = true;
+
+          try {
+            // Create FormData excluding the name field
+            const formData = new FormData(this);
+
+            const response = await fetch("/api/predict/self_diagnosis", {
+              method: "POST",
+              body: formData,
+            });
+
+            const result = await response.json();
+
+            // Display results
+            const userName = userNameInput.value || "there";
+            const riskLevel = result.prediction === "PCOS Detected" ? "high" : "low";
+            const riskClass =
+              result.prediction === "1" ? "high-risk" : "low-risk";
+
+            resultContent.innerHTML = `
+                <p>Hello ${userName},</p>
+                <p>Based on the information you provided:</p>
+                <p>Your risk of having PCOS is <span class="${riskClass}">${riskLevel}</span>.</p>
+                <p>${
+                  riskLevel === "high"
+                    ? "We recommend consulting with a healthcare professional for further evaluation and guidance."
+                    : "This result suggests a lower likelihood of PCOS, but always consult with a doctor for any health concerns."
+                }
+                </p>
+                <p><strong>Disclaimer:</strong> This self-assessment is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+            `;
+
+            resultContainer.style.display = "block";
+
+            // Scroll to results
+            resultContainer.scrollIntoView({ behavior: "smooth" });
+          } catch (error) {
+            resultContent.innerHTML = `
+                <p class="text-danger">An error occurred while processing your request. Please try again later.</p>
+            `;
+            resultContainer.style.display = "block";
+          } finally {
+            submitBtn.innerHTML = "Get Results";
+            submitBtn.disabled = false;
+          }
+        });
+
+      // Add validation styling on input
+      document.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("input", function () {
+          if (this.checkValidity()) {
+            this.classList.remove("is-invalid");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

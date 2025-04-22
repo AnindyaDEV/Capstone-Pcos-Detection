@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Gynecologists</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #8e44ad;
+            --secondary-color: #9b59b6;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+        
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        
+        .gynecologist-list {
+            margin-top: 2rem;
+        }
+        
+        .gynecologist-item {
+            background-color: white;
+            border: none;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gynecologist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        
+        .gynecologist-item h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .rating {
+            color: #f1c40f;
+            font-weight: 600;
+        }
+        
+        .info-icon {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        .error-message {
+            color: var(--accent-color);
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #fdecea;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .map-container {
+            position: relative;
+        }
+        
+        .search-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'partials/navbar.html' %}
+    {% include 'partials/chatbot-mascot.html' %}
+    <div class="header">
+        <div class="container">
+            <h1 class="text-center mb-3">Find Gynecologists Near You</h1>
+            <p class="text-center">Discover qualified gynecologists in your area</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <input type="text" id="cityInput" class="form-control" placeholder="Enter city name">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" onclick="searchByCity()">
+                                <i class="fas fa-search mr-2"></i>Search City
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-md-left">
+                    <button class="btn btn-secondary" onclick="getCurrentLocation()">
+                        <i class="fas fa-location-arrow mr-2"></i>Use My Location
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="error-message" class="error-message"></div>
+        
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        <div class="loading-spinner" id="loading-spinner">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="mt-2">Finding gynecologists near you...</p>
+        </div>
+        
+        <div class="gynecologist-list" id="gynecologist-results"></div>
+    </div>
+
+    <script>
+        let map;
+        let markers = [];
+        let infoWindows = [];
+        let currentLocationMarker = null;
+        let currentHighlightedMarker = null;
+        let placesService;
+        let googleMapsKey = null;
+    
+        // Initialize by fetching the Google Maps API key
+        async function initialize() {
+            try {
+                const response = await fetch('/get-map-token');
+                const data = await response.json();
+                googleMapsKey = data.key;
+            } catch (error) {
+                showError('Failed to load map services. Please try again later.');
+                console.error('Error fetching API key:', error);
+            }
+        }
+    
+        // Call initialize when page loads
+        initialize();
+    
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    
+        function clearError() {
+            document.getElementById('error-message').style.display = 'none';
+        }
+    
+        function showLoading(show) {
+            document.getElementById('loading-spinner').style.display = show ? 'block' : 'none';
+        }
+    
+        function showMap() {
+            document.getElementById('map').style.display = 'block';
+            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+        }
+    
+        async function getCurrentLocation() {
+            if (!googleMapsKey) {
+                showError('Map services not initialized. Please refresh the page.');
+                return;
+            }
+    
+            clearError();
+            showLoading(true);
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const userLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        await loadMap(userLocation);
+                        await getGynecologists(userLocation.lat, userLocation.lng);
+                    },
+                    error => {
+                        showLoading(false);
+                        showError('Error getting location: ' + error.message);
+                    },
+                    { enableHighAccuracy: true, timeout: 10000 }
+                );
+            } else {
+                showLoading(false);
+                showError('Geolocation is not supported by your browser');
+            }
+        }
+    
+        async function searchByCity() {
+            if (!googleMapsKey) {
+                showError('Map services not initialized. Please refresh the page.');
+                return;
+            }
+    
+            const cityInput = document.getElementById('cityInput');
+            const city = cityInput.value.trim();
+            
+            if (!city) {
+                showError("Please enter a city name");
+                cityInput.focus();
+                return;
+            }
+            
+            clearError();
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(city)}&key=${googleMapsKey}`);
+                const data = await response.json();
+                
+                if (data.status === "OK" && data.results[0]) {
+                    const location = data.results[0].geometry.location;
+                    await loadMap(location);
+                    await getGynecologists(location.lat, location.lng);
+                } else {
+                    showLoading(false);
+                    showError("City not found. Please try a different name.");
+                }
+            } catch (error) {
+                showLoading(false);
+                showError("Error searching for city: " + error.message);
+            }
+        }
+    
+        async function loadMap(centerLocation) {
+            if (typeof google === 'undefined') {
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}&libraries=places&callback=initMapAfterLoad`;
+                script.async = true;
+                script.defer = true;
+                script.onload = () => {
+                    initMapAfterLoad(centerLocation);
+                };
+                document.head.appendChild(script);
+            } else {
+                createMap(centerLocation);
+            }
+        }
+    
+        function initMapAfterLoad(centerLocation) {
+            createMap(centerLocation);
+        }
+    
+        function createMap(centerLocation) {
+            showMap();
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: centerLocation,
+                zoom: 13,
+                styles: [
+                    {
+                        "featureType": "poi.medical",
+                        "elementType": "labels.icon",
+                        "stylers": [{"visibility": "on"}]
+                    },
+                    {
+                        "featureType": "poi.medical",
+                        "elementType": "labels.text",
+                        "stylers": [{"visibility": "on"}]
+                    }
+                ]
+            });
+            
+            placesService = new google.maps.places.PlacesService(map);
+            
+            if (currentLocationMarker) {
+                currentLocationMarker.setMap(null);
+            }
+            
+            currentLocationMarker = new google.maps.Marker({
+                position: centerLocation,
+                map: map,
+                title: "Your Location",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                }
+            });
+        }
+    
+        function clearMarkers() {
+            if (currentHighlightedMarker) {
+                currentHighlightedMarker.setAnimation(null);
+                currentHighlightedMarker = null;
+            }
+            
+            infoWindows.forEach(window => window.close());
+            infoWindows = [];
+            
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+        }
+    
+        async function getGynecologists(lat, lng) {
+            clearError();
+            showLoading(true);
+            
+            try {
+                const response = await fetch(`/gyne?lat=${lat}&lng=${lng}&radius=5000&keyword=gynecologist`);
+                const data = await response.json();
+                
+                if (data.status === "OK") {
+                    addMarkers(data.results);
+                    displayGynecologists(data.results);
+                } else {
+                    showError(data.error_message || "No gynecologists found in this area");
+                }
+            } catch (error) {
+                console.error("Fetch error:", error);
+                showError("Failed to connect to server. Please try again later.");
+            } finally {
+                showLoading(false);
+            }
+        }
+    
+        function addMarkers(places) {
+            clearMarkers();
+            
+            const bounds = new google.maps.LatLngBounds();
+            
+            places.forEach((place, index) => {
+                if (!place.geometry || !place.geometry.location) return;
+                
+                const marker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    title: place.name,
+                    icon: {
+                        url: "https://maps.google.com/mapfiles/ms/icons/pink-dot.png"
+                    }
+                });
+                
+                markers.push(marker);
+                bounds.extend(place.geometry.location);
+                
+                getPlaceDetails(place.place_id).then(details => {
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: createInfoWindowContent(place, details)
+                    });
+                    
+                    infoWindows.push(infoWindow);
+                    
+                    marker.addListener('click', () => {
+                        closeAllInfoWindows();
+                        if (currentHighlightedMarker) {
+                            currentHighlightedMarker.setAnimation(null);
+                        }
+                        marker.setAnimation(google.maps.Animation.BOUNCE);
+                        currentHighlightedMarker = marker;
+                        infoWindow.open(map, marker);
+                        
+                        // Highlight corresponding list item
+                        highlightListItem(index);
+                    });
+                });
+            });
+            
+            if (places.length > 0) {
+                bounds.extend(currentLocationMarker.getPosition());
+                map.fitBounds(bounds, {padding: 50});
+            }
+        }
+    
+        function getPlaceDetails(placeId) {
+            return new Promise((resolve) => {
+                if (!placeId || !placesService) {
+                    resolve({});
+                    return;
+                }
+                
+                placesService.getDetails({
+                    placeId: placeId,
+                    fields: ['formatted_phone_number', 'website', 'opening_hours', 'international_phone_number']
+                }, (place, status) => {
+                    if (status === google.maps.places.PlacesServiceStatus.OK) {
+                        resolve(place);
+                    } else {
+                        resolve({});
+                    }
+                });
+            });
+        }
+    
+        function createInfoWindowContent(place, details = {}) {
+            const phoneNumber = details.formatted_phone_number || details.international_phone_number;
+            const phoneLink = phoneNumber ? `tel:${phoneNumber.replace(/\D/g, '')}` : '';
+            
+            return `
+                <div style="padding: 10px; max-width: 250px;">
+                    <h5 style="color: #8e44ad; margin-top: 0;">${place.name}</h5>
+                    <p><i class="fas fa-map-marker-alt" style="color: #8e44ad;"></i> ${place.vicinity}</p>
+                    ${place.rating ? `<p><i class="fas fa-star" style="color: #f1c40f;"></i> Rating: ${place.rating} (${place.user_ratings_total || 0} reviews)</p>` : ''}
+                    
+                    <div class="contact-info">
+                        ${phoneNumber ? `
+                            <p><i class="fas fa-phone" style="color: #8e44ad;"></i> <a href="${phoneLink}">${phoneNumber}</a></p>
+                        ` : ''}
+                        
+                        ${details.website ? `
+                            <p><i class="fas fa-globe" style="color: #8e44ad;"></i> <a href="${details.website}" target="_blank">Website</a></p>
+                        ` : ''}
+                        
+                        ${details.opening_hours ? `
+                            <p><i class="fas fa-clock" style="color: #8e44ad;"></i> ${details.opening_hours.isOpen() ? 'Open Now' : 'Closed Now'}</p>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+    
+        function closeAllInfoWindows() {
+            infoWindows.forEach(window => window.close());
+        }
+    
+        function displayGynecologists(gynecologists) {
+            const resultsDiv = document.getElementById('gynecologist-results');
+            resultsDiv.innerHTML = '';
+    
+            if (!gynecologists || gynecologists.length === 0) {
+                resultsDiv.innerHTML = '<div class="alert alert-info">No gynecologists found in your area. Try a different location.</div>';
+                return;
+            }
+    
+            gynecologists.forEach((gynecologist, index) => {
+                const gynecologistItem = document.createElement('div');
+                gynecologistItem.classList.add('gynecologist-item');
+                gynecologistItem.dataset.index = index;
+                
+                gynecologistItem.addEventListener('click', () => {
+                    focusOnMarker(index);
+                });
+    
+                getPlaceDetails(gynecologist.place_id).then(details => {
+                    const phoneNumber = details.formatted_phone_number || details.international_phone_number;
+                    const phoneLink = phoneNumber ? `tel:${phoneNumber.replace(/\D/g, '')}` : '';
+                    
+                    gynecologistItem.innerHTML = `
+                        <h5><i class="fas fa-female info-icon"></i>${gynecologist.name}</h5>
+                        <p><i class="fas fa-map-marker-alt info-icon"></i><strong>Address:</strong> ${gynecologist.vicinity}</p>
+                        ${gynecologist.rating ? `
+                            <p><i class="fas fa-star info-icon"></i><strong>Rating:</strong> <span class="rating">${gynecologist.rating}</span> (${gynecologist.user_ratings_total || 0} reviews)</p>
+                        ` : ''}
+                        
+                        <div class="contact-info">
+                            ${phoneNumber ? `
+                                <p><i class="fas fa-phone info-icon"></i><strong>Phone:</strong> <a href="${phoneLink}">${phoneNumber}</a></p>
+                            ` : ''}
+                            
+                            ${details.website ? `
+                                <p><i class="fas fa-globe info-icon"></i><strong>Website:</strong> <a href="${details.website}" target="_blank">Visit Website</a></p>
+                            ` : ''}
+                            
+                            ${details.opening_hours ? `
+                                <p><i class="fas fa-clock info-icon"></i><strong>Status:</strong> ${details.opening_hours.isOpen() ? 'Open Now' : 'Closed Now'}</p>
+                            ` : ''}
+                        </div>
+                        
+                        <button onclick="event.stopPropagation(); focusOnMarker(${index})" class="btn btn-outline-primary btn-sm mt-2">
+                            <i class="fas fa-map-marker-alt"></i> Show on Map
+                        </button>
+                    `;
+                });
+                
+                resultsDiv.appendChild(gynecologistItem);
+            });
+        }
+    
+        function highlightListItem(index) {
+            const items = document.querySelectorAll('.gynecologist-item');
+            items.forEach(item => item.style.backgroundColor = '');
+            
+            if (index >= 0 && index < items.length) {
+                items[index].style.backgroundColor = '#f8f0fc';
+                items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    
+        function focusOnMarker(index) {
+            if (!map || !markers[index]) return;
+            
+            const marker = markers[index];
+            
+            closeAllInfoWindows();
+            if (currentHighlightedMarker) {
+                currentHighlightedMarker.setAnimation(null);
+            }
+            
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            currentHighlightedMarker = marker;
+            
+            map.setCenter(marker.getPosition());
+            map.setZoom(16);
+            
+            infoWindows[index].open(map, marker);
+            showMap();
+            highlightListItem(index);
+        }
+    
+        document.getElementById('cityInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchByCity();
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning"],
+      "responses": [
+        "Hello! I'm your PCOS Companion 🌸 What would you like help with today?",
+        "Hi there! Ready to manage your PCOS health? Choose: Nutrition 🥗, Fitness 🏋️‍♀️, or Specialist Search 🩺"
+      ],
+      "quick_replies": ["Nutrition", "Fitness", "Find Specialist", "PCOS Basics"]
+    },
+    {
+      "tag": "pharmacy_nearby",
+      "patterns": ["find pharmacy", "nearby pharmacy", "medicine shop near me", "buy medicines"],
+      "responses": [
+        "🧾 Looking for a nearby pharmacy? Please enable location or enter your area.",
+        "Let’s find you a pharmacy nearby. You can [browse trusted pharmacies](/pharmacy) or share your location for better results."
+      ],
+      "quick_replies": ["Use My Location", "Enter City", "Back to Menu"]
+    },
+    {
+      "tag": "pcos_check",
+      "patterns": ["check for pcos", "do i have pcos", "pcos test"],
+      "responses": [
+        "Let's check for PCOS. Do you have an ultrasound report or would you like to share symptoms?"
+      ],
+      "options": [
+        ["I have ultrasound images", "ultrasound_check"],
+        ["I want to share symptoms", "self_diagnosis"]
+      ]
+    },
+    {
+      "tag": "pcos_check",
+      "patterns": [
+        "How do I check for PCOS",
+        "Can I check for PCOS here",
+        "I want to know if I have PCOS",
+        "Check for PCOS",
+        "I think I have PCOS",
+        "Is there a PCOS test",
+        "Can I check here",
+        "Help me check PCOS"
+      ],
+      "responses": [
+        "Let's check for PCOS. Do you have:"
+      ],
+      "options": [
+        ["I have ultrasound images", "ultrasound_check"],
+        ["I want to share symptoms", "self_diagnosis"]
+      ]
+    },
+    {
+      "tag": "pcos_education",
+      "patterns": ["what is pcos", "pcos explained", "tell me about pcos"],
+      "responses": [
+        "PCOS is a hormonal disorder affecting 1 in 10 women. Key signs: irregular periods, ovarian cysts, insulin resistance. Want to [take a quick assessment](/self_diagnosis)?",
+        "Polycystic Ovary Syndrome involves hormone imbalance. Common symptoms: acne, weight gain, fertility challenges."
+      ]
+    },
+    {
+      "tag": "nutrition_flow_start",
+      "patterns": ["diet help", "meal plan", "nutrition tips"],
+      "responses": [
+        "Let's build your PCOS-friendly meal plan! First, what's your dietary preference?",
+        "🥗 Great choice! Do you follow: Veg/Non-veg/Vegan/Gluten-free?"
+      ],
+      "quick_replies": ["Vegetarian", "Non-vegetarian", "Vegan", "Gluten-free"],
+      "next_step": "nutrition_flow_diet_type"
+    },
+    {
+      "tag": "nutrition_flow_diet_type",
+      "patterns": [], 
+      "responses": {
+        "Vegetarian": "Got it! Try these PCOS superfoods: chia seeds, lentils, and Greek yogurt. Want a [7-day veg plan](/nutrition)?",
+        "Vegan": "Excellent! Focus on plant proteins like tofu and quinoa. Here's a [vegan starter guide](/nutrition)",
+        "Non-vegetarian": "Great! Fatty fish (salmon) and lean poultry work well. Need [recipe ideas](/nutrition)?",
+        "Gluten-free": "Smart choice! Try almond flour and buckwheat. Check our [gluten-free recipes](/nutrition)"
+      },
+      "quick_replies": ["View Recipes", "Track Meals", "Back"]
+    },
+    {
+      "tag": "fitness_flow_start",
+      "patterns": ["exercise", "workout plan", "fitness routine"],
+      "responses": [
+        "🏋️‍♀️ PCOS thrives on movement! What's your goal?",
+        "Let's customize your workout. Choose: Weight loss/Build stamina/Stress relief"
+      ],
+      "quick_replies": ["Weight Loss", "Build Stamina", "Stress Relief"],
+      "next_step": "fitness_flow_goal"
+    },
+    {
+      "tag": "specialist_search",
+      "patterns": ["find doctor", "gynecologist near me", "pcos specialist"],
+      "responses": [
+        "I'll help you find PCOS experts. Share your location or [browse specialists](/pharmacy)?",
+        "🩺 Let's connect you with care. Allow location access or type your city:"
+      ],
+      "quick_replies": ["Use My Location", "Enter Manually", "Later"]
+    },
+    {
+      "tag": "emergency",
+      "patterns": ["severe pain", "emergency", "need doctor now"],
+      "responses": [
+        "🚨 Please contact your healthcare provider immediately or visit the nearest hospital.",
+        "For urgent symptoms, call emergency services. Here are nearby hospitals: [Hospital List](/pharmacy)"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "thanks"],
+      "responses": [
+        "Remember: PCOS management is a journey. You've got this! 💪 Come back anytime.",
+        "Stay strong! Bookmark your [personalized dashboard](/profile) for quick access."
+      ]
+    }
+  ],
+  "flows": {
+    "nutrition": {
+      "steps": ["diet_type", "allergies", "calorie_goal"],
+      "redirect": "/nutrition"
+    },
+    "fitness": {
+      "steps": ["goal", "equipment", "frequency"],
+      "redirect": "/fitness"
+    },
+    "pharmacy": {
+  "steps": ["location", "filter", "results"],
+  "redirect": "/pharmacy"
+}
+  }
+}

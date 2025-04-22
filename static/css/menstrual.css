@@ -1,0 +1,206 @@
+:root {
+    --primary: #8e44ad;
+    --secondary: #9b59b6;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --period: #ff6b81;
+    --pre-period: #feca57;
+    --post-period: #7ed6df;
+    --ovulation: #e056fd;
+    --fertile: #badc58;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #faf5ff; /* Maintain your existing background */
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1000px;
+  }
+  
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  
+  .form-control, .form-select {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(142, 68, 173, 0.25);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  #calendar {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  .fc-header-toolbar {
+    margin-bottom: 1rem;
+  }
+  
+  .fc-toolbar-title {
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  .fc-button {
+    background-color: var(--primary) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+  }
+  
+  .fc-button:hover {
+    background-color: var(--secondary) !important;
+  }
+  
+  /* Calendar day colors */
+  .fc-daygrid-day[data-period="period"] {
+    background-color: var(--period) !important;
+    color: white;
+  }
+  
+  .fc-daygrid-day[data-period="pre"] {
+    background-color: var(--pre-period) !important;
+  }
+  
+  .fc-daygrid-day[data-period="post"] {
+    background-color: var(--post-period) !important;
+  }
+  
+  .fc-daygrid-day[data-period="ovulation"] {
+    background-color: var(--ovulation) !important;
+    color: white;
+  }
+  
+  .fc-daygrid-day[data-period="fertile"] {
+    background-color: var(--fertile) !important;
+  }
+  
+  /* Legend styles */
+  .legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 1.5rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  /* Color classes for legend */
+  .period-bg { background-color: var(--period); }
+  .pre-period-bg { background-color: var(--pre-period); }
+  .post-period-bg { background-color: var(--post-period); }
+  .ovulation-bg { background-color: var(--ovulation); }
+  .fertile-bg { background-color: var(--fertile); }
+  
+  /* Feature cards */
+  .feature-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-card h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Export buttons */
+  .export-buttons {
+    margin: 20px 0;
+  }
+  
+  .export-buttons .btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  
+  /* Modal styles */
+  .modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .modal-body .btn {
+    text-align: left;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  /* Form values (hidden) */
+  .form-values {
+    display: none;
+  }

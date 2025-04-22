@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="{{ url_for('pages.home') }}" style="color: #8e44ad;">
+      <i class="bi bi-heart-pulse me-2"></i>PCOS Detect
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == url_for('pages.home') %}active fw-bold{% endif %}" href="{{ url_for('pages.home') }}" style="color: #8e44ad;">
+            <i class="bi bi-house-door me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path.startswith(url_for('pages.menstrual_page')) %}active fw-bold{% endif %}" href="{{ url_for('pages.menstrual_page') }}" style="color: #8e44ad;">
+            <i class="bi bi-calendar-heart me-1"></i>Cycle Tracker
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path.startswith(url_for('pages.self_diagnosis_page')) %}active fw-bold{% endif %}" href="{{ url_for('pages.self_diagnosis_page') }}" style="color: #8e44ad;">
+            <i class="bi bi-clipboard2-pulse me-1"></i>Diagnosis
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path.startswith(url_for('pages.ultrasound_page')) %}active fw-bold{% endif %}" href="{{ url_for('pages.ultrasound_page') }}" style="color: #8e44ad;">
+            <i class="bi bi-image-alt me-1"></i>Ultrasound
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.path.startswith(url_for('pages.chatbot_page')) %}active fw-bold{% endif %}" href="{{ url_for('pages.chatbot_page') }}" style="color: #8e44ad;">
+            <i class="bi bi-chat-square-text me-1"></i>Assistant
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Remove default spacing */
+  body {
+    padding-top: 0 !important;
+    margin: 0;
+  }
+  
+  /* Navbar styling */
+  .navbar {
+    z-index: 1030;
+    padding: 0.5rem 0;
+    background-color: white !important;
+    border-bottom: 1px solid rgba(142, 68, 173, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.3rem;
+    padding: 0;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #6c3483 !important;
+  }
+  
+  .nav-link.active {
+    color: #8e44ad !important;
+    position: relative;
+  }
+  
+  .nav-link.active:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 1rem;
+    right: 1rem;
+    height: 3px;
+    background-color: #8e44ad;
+    border-radius: 3px;
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      padding: 1rem 0;
+    }
+    
+    .nav-link {
+      padding: 0.5rem 1.5rem;
+    }
+    
+    .nav-link.active:after {
+      left: 1.5rem;
+      right: auto;
+      width: 4px;
+      height: 100%;
+      bottom: 0;
+    }
+  }
+  
+  /* Toggler icon color */
+  .navbar-toggler {
+    border-color: rgba(142, 68, 173, 0.1);
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28142, 68, 173, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+</style>

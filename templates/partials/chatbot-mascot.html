@@ -1,0 +1,225 @@
+<!-- partials/chatbot-mascot.html -->
+<div class="chatbot-mascot" onclick="window.location.href='{{ url_for('pages.chatbot_page') }}'">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Robot head -->
+    <rect x="15" y="20" width="70" height="70" rx="15" fill="#80C4E9" stroke="#604CC3" stroke-width="2"/>
+    
+    <!-- Eyes -->
+    <circle cx="35" cy="50" r="7" fill="#8e44ad"/>
+    <circle cx="65" cy="50" r="7" fill="#8e44ad"/>
+    
+    <!-- Mouth -->
+    <path d="M40 70 Q50 80 60 70" stroke="#8e44ad" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <!-- Antennas -->
+    <line x1="30" y1="20" x2="20" y2="5" stroke="#b399b3" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="20" cy="5" r="4" fill="#8e44ad"/>
+    
+    <line x1="70" y1="20" x2="80" y2="5" stroke="#b399b3" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="80" cy="5" r="4" fill="#8e44ad"/>
+    
+    <!-- Status light -->
+    <circle cx="75" cy="25" r="4" fill="#a7c4bc"/>
+    
+    <!-- Decorative heart -->
+    <path d="M50 30 Q52 25 55 28 Q58 30 50 35 Q42 30 45 28 Q48 25 50 30" fill="#FF2929"/>
+  </svg>
+  
+  <!-- Speech bubble container (now in HTML instead of pseudo-element) -->
+  <div class="speech-bubble"></div>
+</div>
+
+<style>
+  /* Chatbot Mascot Container */
+  .chatbot-mascot {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 1000;
+    filter: drop-shadow(0 4px 12px rgba(170, 96, 200, 0.3));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .chatbot-mascot svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(2deg);
+    }
+  }
+  
+  /* Hover effects */
+  .chatbot-mascot:hover {
+    transform: scale(1.15) translateY(-8px);
+    filter: drop-shadow(0 8px 20px rgba(170, 96, 200, 0.4));
+    animation: none;
+  }
+  
+  .chatbot-mascot:hover svg {
+    transform: rotate(5deg);
+  }
+  
+  /* Click effect */
+  .chatbot-mascot:active {
+    transform: scale(0.95);
+  }
+  
+  /* Speech bubble styling */
+  .speech-bubble {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff9fc;
+    padding: 8px 15px;
+    border-radius: 18px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8e44ad;
+    box-shadow: 0 3px 12px rgba(142, 68, 173, 0.15);
+    border: 1px solid rgba(142, 68, 173, 0.2);
+    width: max-content;
+    max-width: 180px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+  }
+  
+  /* Show bubble on hover AND when active-message class is present */
+  .chatbot-mascot:hover .speech-bubble,
+  .chatbot-mascot.active-message .speech-bubble {
+    opacity: 1;
+    top: -65px;
+    transform: translateX(-50%) scale(1.05);
+  }
+  
+  /* Pulsing effect */
+  @keyframes aesthetic-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(142, 68, 173, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(142, 68, 173, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(142, 68, 173, 0);
+    }
+  }
+  
+  .attention-pulse {
+    animation: aesthetic-pulse 2.5s infinite;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mascot = document.querySelector('.chatbot-mascot');
+    const speechBubble = mascot.querySelector('.speech-bubble');
+    
+    // Messages for rotation
+    const messages = [
+      "Let's chat! 💬",
+      "Need advice?",
+      "I'm here to help 🌸",
+      "Ask me anything",
+      "PCOS questions?",
+      "Talk to me ✨"
+    ];
+    
+    let currentMsg = 0;
+    let messageInterval;
+    let autoMessageTimeout;
+    
+    // Function to show message
+    function showMessage() {
+      speechBubble.textContent = messages[currentMsg];
+      mascot.classList.add('active-message');
+      
+      // Hide after 3 seconds if not hovering
+      if (!mascot.matches(':hover')) {
+        setTimeout(() => {
+          if (!mascot.matches(':hover')) {
+            mascot.classList.remove('active-message');
+          }
+        }, 3000);
+      }
+      
+      currentMsg = (currentMsg + 1) % messages.length;
+    }
+    
+    // Automatic message rotation (every 8 seconds)
+    function startAutoMessages() {
+      showMessage(); // Show first message immediately
+      
+      messageInterval = setInterval(() => {
+        if (!mascot.matches(':hover')) {
+          showMessage();
+        }
+      }, 8000);
+    }
+    
+    // Hover message rotation (every 3 seconds)
+    function startHoverMessages() {
+      clearInterval(messageInterval);
+      showMessage();
+      
+      messageInterval = setInterval(() => {
+        showMessage();
+      }, 3000);
+    }
+    
+    // Stop messages when not hovering
+    function stopHoverMessages() {
+      clearInterval(messageInterval);
+      mascot.classList.remove('active-message');
+      startAutoMessages();
+    }
+    
+    // Start the automatic messages
+    startAutoMessages();
+    
+    // Set up hover events
+    mascot.addEventListener('mouseenter', startHoverMessages);
+    mascot.addEventListener('mouseleave', stopHoverMessages);
+    
+    // Gentle attention pulse every 20-40 seconds
+    function randomPulse() {
+      setTimeout(() => {
+        if (!mascot.matches(':hover')) {
+          mascot.classList.add('attention-pulse');
+          setTimeout(() => {
+            mascot.classList.remove('attention-pulse');
+            randomPulse();
+          }, 2500);
+        } else {
+          randomPulse(); // Try again if currently hovering
+        }
+      }, 20000 + Math.random() * 20000);
+    }
+    
+    randomPulse();
+    
+    // Initial animation
+    setTimeout(() => {
+      mascot.style.transform = 'rotate(-5deg)';
+      setTimeout(() => {
+        mascot.style.transform = 'rotate(0)';
+      }, 300);
+    }, 500);
+  });
+</script>

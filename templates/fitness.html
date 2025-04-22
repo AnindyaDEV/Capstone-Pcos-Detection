@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harmony | PCOS Fitness Planner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="/static/css/fitness.css" rel="stylesheet">
+</head>
+<body>
+  {% include 'partials/navbar.html' %}
+  {% include 'partials/chatbot-mascot.html' %}
+
+  <div class="pcos-container">
+    <header class="pcos-header text-center">
+      <div class="header-icon">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <h1>PCOS Fitness Planner</h1>
+      <p class="subtitle">Your personalized workout companion</p>
+    </header>
+
+    <div class="selection-card">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="goal" class="form-label">
+            <i class="fas fa-bullseye me-2"></i>Primary Goal
+          </label>
+          <select id="goal" class="form-select">
+            <option value="">Select your goal</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="bodyType" class="form-label">
+            <i class="fas fa-user-tag me-2"></i>Body Type
+          </label>
+          <select id="bodyType" class="form-select">
+            <option value="">Select body type</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="severity" class="form-label">
+            <i class="fas fa-clinic-medical me-2"></i>PCOS Severity
+          </label>
+          <select id="severity" class="form-select">
+            <option value="">Select severity</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadingSpinner" class="loading-spinner text-center my-4">
+      <div class="spinner"></div>
+      <p>Creating your personalized plan...</p>
+    </div>
+
+    <div id="planResults" class="plan-results"></div>
+
+    <div class="nutrition-planner-card text-center mt-5">
+      <h3><i class="fas fa-utensils me-2"></i>Complete Your Journey</h3>
+      <p>Pair your fitness plan with personalized nutrition guidance</p>
+      <div class="nutrition-links">
+        <a href="/nutrition" target="_blank" class="nutrition-link">
+          <i class="fas fa-apple-alt"></i> Your Diet
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/fitness.js"></script>
+</body>
+</html>

@@ -1,0 +1,868 @@
+{
+  "weight_loss": {
+    "lean": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Brisk walking (30 mins at 3.5-4 mph) + Light Resistance Band Circuit (3 rounds: 10 banded squats, 12 banded rows, 15 glute bridges)",
+            "benefits": "Boosts metabolism, activates major muscle groups without joint stress",
+            "tips": "Focus on form over speed. Drink water before/after."
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Pilates (Beginner Core - 30 mins: Pelvic tilts, dead bugs, modified planks, seated marches)",
+            "benefits": "Strengthens deep core muscles important for PCOS",
+            "tips": "Engage transverse abdominals throughout"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Rest or Light Yoga (25 min Yin: Child's pose, cat-cow, seated forward fold, legs up wall)",
+            "benefits": "Reduces cortisol, improves flexibility",
+            "tips": "Hold poses 3-5 breaths minimum"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Bodyweight Strength Training (3 rounds: 10 push-ups (knees ok), 15 chair squats, 20 sec plank, 12 lunges)",
+            "benefits": "Builds lean muscle to increase resting metabolism",
+            "tips": "Go slow on eccentric movements"
+          },
+          {
+            "day": "Friday",
+            "routine": "Power Yoga (40 mins: Sun salutations, warrior flows, balancing poses)",
+            "benefits": "Combines strength and mindfulness",
+            "tips": "Modify as needed - use blocks"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Long Walk (45-60 mins at comfortable pace) + Stretch (10 mins: Hamstrings, hips, shoulders)",
+            "benefits": "Active recovery, improves insulin sensitivity",
+            "tips": "Walk after largest meal for best blood sugar control"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest or gentle mobility (5-10 mins light stretching)",
+            "benefits": "Allows full recovery",
+            "tips": "Practice gratitude journaling today"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-2": {
+            "focus": "Establish routine consistency",
+            "details": "Bodyweight only, 2x/week strength sessions. Walk 4x/week."
+          },
+          "phase_2_weeks_3-4": {
+            "focus": "Increase intensity gradually",
+            "details": "Add light resistance bands. Incorporate Pilates pulses (2 sec hold)."
+          },
+          "phase_3_weeks_5-8": {
+            "focus": "Metabolic conditioning",
+            "details": "Include short intervals (30 sec on/30 sec off). Add 1 HIIT session weekly."
+          },
+          "phase_4_weeks_9+": {
+            "focus": "Periodization",
+            "details": "Cycle intensity weekly (light/medium/heavy). Track measurements monthly."
+          }
+        },
+        "nutrition_tips": [
+          "Prioritize protein at every meal (20-30g)",
+          "Include healthy fats with carbs to slow glucose absorption",
+          "Stay hydrated (2-3L water daily)",
+          "Consider magnesium supplement for insulin sensitivity"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Walking (Low pace, 20 mins) + Deep Stretch (10 mins: Focus on hips and shoulders)",
+            "benefits": "Gentle movement to start week without stress",
+            "tips": "Walk indoors if weather is extreme"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Seated Mobility (15 mins: Ankle circles, knee lifts, torso twists) + Breathing (5 mins diaphragmatic breathing)",
+            "benefits": "Improves circulation without raising cortisol",
+            "tips": "Practice after waking or before bed"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Rest or Yoga Nidra (20 min guided relaxation)",
+            "benefits": "Deep nervous system reset",
+            "tips": "Do in quiet, dark space"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Very Light Strength (2 sets of 8 reps: Seated leg lifts, wall push-ups, band pulls)",
+            "benefits": "Maintains muscle without overexertion",
+            "tips": "Stop if any pain beyond mild fatigue"
+          },
+          {
+            "day": "Friday",
+            "routine": "Pilates with Support (25 mins using chair or wall for balance)",
+            "benefits": "Improves core stability safely",
+            "tips": "Focus on precision over repetitions"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Nature Walk (20-30 mins) + Journaling (5 mins gratitude)",
+            "benefits": "Combines movement with mental health",
+            "tips": "Walk barefoot on grass if possible"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional meditation",
+            "benefits": "Full recovery day",
+            "tips": "Prep healthy meals for upcoming week"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-3": {
+            "focus": "Gentle, mindful movement only",
+            "details": "Focus on breathing and short movement sessions (10-15 mins)"
+          },
+          "phase_2_weeks_4-6": {
+            "focus": "Increase movement frequency",
+            "details": "Add short walks twice/day (5-10 mins each). Begin light toning."
+          },
+          "phase_3_weeks_7-9": {
+            "focus": "Build endurance",
+            "details": "Single longer walk (20-25 mins) 2x/week. Add resistance bands."
+          },
+          "phase_4_weeks_10+": {
+            "focus": "Sustainable routine",
+            "details": "Combine walking with 2x/week supported strength. Track energy levels."
+          }
+        },
+        "nutrition_tips": [
+          "Small, frequent meals to stabilize blood sugar",
+          "Focus on anti-inflammatory foods (berries, leafy greens)",
+          "Consider inositol supplement after consulting doctor",
+          "Limit caffeine to 1 cup/day before noon"
+        ]
+      }
+    },
+    "overweight": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Walking (30 mins at comfortable pace, can be broken into 10-min sessions)",
+            "benefits": "Low-impact calorie burn",
+            "tips": "Use supportive footwear"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Chair Yoga (25 mins: Seated cat-cow, seated twists, arm reaches) or Aqua Stretch (in pool if available)",
+            "benefits": "Improves mobility without joint stress",
+            "tips": "Focus on breath-movement connection"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Upper Body Strength (Seated - 3 rounds: 10 arm raises, 12 seated rows with band, 15 shoulder rolls)",
+            "benefits": "Builds metabolism-boosting muscle",
+            "tips": "Keep water bottle nearby"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Walking (20 mins) + Band Work (2 rounds: 10 seated leg presses, 12 band pulls, 15 calf raises)",
+            "benefits": "Combines cardio and strength",
+            "tips": "Rest as needed between exercises"
+          },
+          {
+            "day": "Friday",
+            "routine": "Dance (15 mins to favorite music) or Tai Chi (20 mins beginner flow)",
+            "benefits": "Makes movement enjoyable",
+            "tips": "Move within pain-free range"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Core Stability (10 mins: Seated marches, heel slides, pelvic tilts)",
+            "benefits": "Supports posture and back health",
+            "tips": "Engage core before moving"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Active rest (gentle stretching or leisure walk)",
+            "benefits": "Promotes recovery",
+            "tips": "Reflect on weekly progress"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-2": {
+            "focus": "Begin with 10–15 min sessions",
+            "details": "Establish movement habit. Focus on form."
+          },
+          "phase_2_weeks_3-4": {
+            "focus": "Increase duration gradually",
+            "details": "Add 5 mins to walks weekly. Include 1 circuit workout."
+          },
+          "phase_3_weeks_5-8": {
+            "focus": "Introduce resistance training",
+            "details": "Banded strength 2x/week. Walk 5x/week."
+          },
+          "phase_4_weeks_9+": {
+            "focus": "Progress overload",
+            "details": "Increase resistance gradually. Track non-scale victories."
+          }
+        },
+        "nutrition_tips": [
+          "Protein with every meal/snack",
+          "Fill half plate with non-starchy veggies",
+          "Stay hydrated - drink before thirst",
+          "Practice mindful eating - no distractions"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Seated Marching (5 mins) + Deep Breathing (5 mins: 4-7-8 pattern)",
+            "benefits": "Gentle circulation boost",
+            "tips": "Use chair with back support"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Gentle Stretch (10 mins: Neck rolls, shoulder shrugs, ankle circles) + Meditation (5 mins guided)",
+            "benefits": "Reduces stress hormones",
+            "tips": "Do before meals"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Rest or Aqua Therapy (if available: 15 mins water walking)",
+            "benefits": "Gives joints break from weight-bearing",
+            "tips": "Epsom salt bath for relaxation"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Chair Strength (2 sets of 5-8 reps: Seated leg extensions, arm presses, seated good mornings)",
+            "benefits": "Maintains muscle mass",
+            "tips": "Focus on control not speed"
+          },
+          {
+            "day": "Friday",
+            "routine": "Tai Chi (15 mins beginner moves) or Nature Visual Walks (sit outside if mobility limited)",
+            "benefits": "Connects mind and body",
+            "tips": "Morning sunlight if possible"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Simple Core Engagement (5 mins: Pelvic tilts, seated belly breathing) + Stretch (5 mins)",
+            "benefits": "Supports posture and digestion",
+            "tips": "Engage core during daily activities"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional gratitude practice",
+            "benefits": "Full recovery",
+            "tips": "Plan next week's movement schedule"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-4": {
+            "focus": "Very low intensity, high rest",
+            "details": "Short sessions (5-10 mins). Listen to body signals."
+          },
+          "phase_2_weeks_5-8": {
+            "focus": "Add gentle challenges",
+            "details": "Increase to 15 min sessions. Add standing movements."
+          },
+          "phase_3_weeks_9-12": {
+            "focus": "Build endurance",
+            "details": "20 min sessions 3x/week. Add light resistance."
+          },
+          "phase_4_weeks_13+": {
+            "focus": "Sustainable routine",
+            "details": "Mix seated and standing movements. Track energy patterns."
+          }
+        },
+        "nutrition_tips": [
+          "Small portions every 3-4 hours",
+          "Prioritize fiber and protein combinations",
+          "Herbal teas for hydration variety",
+          "Consider probiotic foods for gut health"
+        ]
+      }
+    }
+  },
+  
+  "insulin_resistance": {
+    "lean": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Walk after meals (15 mins after breakfast/lunch/dinner - can be broken up)",
+            "benefits": "Lowers post-meal blood glucose spikes",
+            "tips": "Even 5 mins after eating helps"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Pilates (30 mins with focus on core) + Light Strength (2 rounds: 10 squats, 12 push-ups, 15 glute bridges)",
+            "benefits": "Builds muscle to improve glucose uptake",
+            "tips": "Add 2 sec pause at peak contraction"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Rest or Yoga Stretch (20 mins: Focus on hips and hamstrings)",
+            "benefits": "Maintains flexibility without stress",
+            "tips": "Use strap or belt for support"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Kickboxing (Low Impact - 25 mins: Shadow boxing with light weights or bands)",
+            "benefits": "Improves insulin sensitivity through varied movement",
+            "tips": "Keep knees slightly bent for safety"
+          },
+          {
+            "day": "Friday",
+            "routine": "Band Pulls (3 rounds: 10 rows, 12 pull-aparts, 15 face pulls) + Breathwork (5 mins: 4-4-4 pattern)",
+            "benefits": "Combines strength and stress reduction",
+            "tips": "Focus on squeezing shoulder blades"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Trail Walk or Nature Walk (45 mins with incline if possible)",
+            "benefits": "Natural interval training from terrain changes",
+            "tips": "Walk with friend for motivation"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Active rest (gentle mobility or leisure activity)",
+            "benefits": "Allows recovery while staying mobile",
+            "tips": "Prep healthy snacks for week"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-2": {
+            "focus": "Post-meal movement foundation",
+            "details": "Establish walking after meals routine. 2 strength sessions."
+          },
+          "phase_2_weeks_3-4": {
+            "focus": "Increase metabolic demand",
+            "details": "Add moderate strength. Include short intervals (1:1 work:rest)."
+          },
+          "phase_3_weeks_5-8": {
+            "focus": "Optimize insulin sensitivity",
+            "details": "HIIT once weekly. Progressive overload in strength."
+          },
+          "phase_4_weeks_9+": {
+            "focus": "Periodization",
+            "details": "Cycle intensity. Monitor fasting glucose if possible."
+          }
+        },
+        "nutrition_tips": [
+          "Pair carbs with protein/fat",
+          "Cinnamon in meals may help glucose control",
+          "Vinegar before meals may reduce spikes",
+          "Prioritize sleep for metabolic health"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Walking indoors after meals (10 mins after main meals - can be pacing)",
+            "benefits": "Manages blood sugar without weather concerns",
+            "tips": "March in place if space is limited"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Seated Stretching (10 mins: Hip flexors, chest, hamstrings) + Core (5 mins: Pelvic floor engagement)",
+            "benefits": "Improves circulation to insulin-sensitive areas",
+            "tips": "Use chair without wheels for safety"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Complete rest with optional meditation",
+            "benefits": "Prevents overtraining stress",
+            "tips": "Practice deep breathing exercises"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Light Resistance (2 rounds: 8 banded squats, 10 seated rows, 12 calf raises) + Breathing (5 mins)",
+            "benefits": "Maintains muscle mass important for glucose metabolism",
+            "tips": "Focus on mind-muscle connection"
+          },
+          {
+            "day": "Friday",
+            "routine": "Balance Practice (5 mins: Standing on one foot, heel-toe walk) + Stretch (5 mins)",
+            "benefits": "Improves proprioception which declines with IR",
+            "tips": "Hold onto chair if needed"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Post-meal short walk (10–15 mins after largest meal) + Gratitude journaling",
+            "benefits": "Combines physical and emotional health",
+            "tips": "Notice how food affects energy"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest or gentle mobility",
+            "benefits": "Allows full recovery",
+            "tips": "Hydrate well today"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-4": {
+            "focus": "Blood sugar control foundation",
+            "details": "Gentle routines. Post-meal movement priority."
+          },
+          "phase_2_weeks_5-8": {
+            "focus": "Increase movement frequency",
+            "details": "Add 2nd walk per day. Begin light resistance."
+          },
+          "phase_3_weeks_9-12": {
+            "focus": "Build metabolic capacity",
+            "details": "Low impact strength 2x/week. Longer walks."
+          },
+          "phase_4_weeks_13+": {
+            "focus": "Sustainable management",
+            "details": "Personalized routine based on response. Track trends."
+          }
+        },
+        "nutrition_tips": [
+          "Chromium-rich foods (broccoli, nuts)",
+          "Protein at breakfast to stabilize daily glucose",
+          "Apple cider vinegar before carb-heavy meals",
+          "Stress management as important as diet"
+        ]
+      }
+    }
+  },
+
+  "low_energy": {
+    "lean": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Breathwork (5 mins: 4-7-8 pattern) + Light Stretch (10 mins: Neck, shoulders, back)",
+            "benefits": "Energizes without depleting",
+            "tips": "Do upon waking or midday slump"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Yoga Nidra (20 min guided) + Core Engagement (5 mins: Seated belly breathing)",
+            "benefits": "Deep restoration with subtle activation",
+            "tips": "Practice before afternoon slump"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Complete rest with optional nature sounds",
+            "benefits": "Allows adrenal recovery",
+            "tips": "Limit screen time today"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Mobility (10 mins: Joint circles, cat-cow) + Gentle Strength (2 rounds: 8 squats, 10 push-ups, 12 glute bridges)",
+            "benefits": "Maintains function without fatigue",
+            "tips": "Stop at first sign of exhaustion"
+          },
+          {
+            "day": "Friday",
+            "routine": "Restorative Yoga (30 mins: Supported child's pose, legs up wall, reclined twist)",
+            "benefits": "Activates parasympathetic nervous system",
+            "tips": "Use all props needed"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Walk (20 mins at comfortable pace, can be broken into 10-min sessions)",
+            "benefits": "Gentle circulation boost",
+            "tips": "Morning sunlight if possible"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional meditation",
+            "benefits": "Prepares for coming week",
+            "tips": "Reflect on energy patterns"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-3": {
+            "focus": "Restoration priority",
+            "details": "Relaxing, low-effort sessions. Listen to energy cues."
+          },
+          "phase_2_weeks_4-6": {
+            "focus": "Gradual activation",
+            "details": "Increase movement to 30 mins total daily. Add standing routines."
+          },
+          "phase_3_weeks_7-9": {
+            "focus": "Sustainable energy building",
+            "details": "Core work 2x/week. Short walks after meals."
+          },
+          "phase_4_weeks_10+": {
+            "focus": "Personalized routine",
+            "details": "Adjust based on energy tracking. More activity on high-energy days."
+          }
+        },
+        "nutrition_tips": [
+          "Iron-rich foods if deficient",
+          "Balanced macros at each meal",
+          "Small frequent meals if needed",
+          "Consider adaptogens like ashwagandha"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Breathing only (5 mins box breathing)",
+            "benefits": "Oxygenates without physical strain",
+            "tips": "Do seated or lying down"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Seated Stretching (5 mins: Neck rolls, shoulder shrugs)",
+            "benefits": "Relieves tension minimally",
+            "tips": "Combine with calming music"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Complete rest with optional guided imagery",
+            "benefits": "Deep recovery day",
+            "tips": "Limit sensory input"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Gentle Joint Mobility (5 mins: Ankle circles, wrist rolls, seated twists)",
+            "benefits": "Maintains range of motion",
+            "tips": "Move within pain-free range"
+          },
+          {
+            "day": "Friday",
+            "routine": "Visualization (5 mins) + Light Music Movement (5 mins gentle swaying)",
+            "benefits": "Connects mind-body minimally",
+            "tips": "Choose calming instrumental music"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Complete rest or 5 mins fresh air",
+            "benefits": "Prevents overexertion",
+            "tips": "Hydrate well today"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with gratitude reflection",
+            "benefits": "Resets for coming week",
+            "tips": "Plan simple meals for week"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-4": {
+            "focus": "Minimal effort, deep restoration",
+            "details": "5-10 mins max daily. Priority is healing."
+          },
+          "phase_2_weeks_5-8": {
+            "focus": "Tiny increases",
+            "details": "Add 1-2 short movement sessions weekly. Monitor response."
+          },
+          "phase_3_weeks_9-12": {
+            "focus": "Gentle consistency",
+            "details": "Daily 5-10 min sessions. Begin tracking energy patterns."
+          },
+          "phase_4_weeks_13+": {
+            "focus": "Sustainable routine",
+            "details": "Gradual duration increases as tolerated. Celebrate small wins."
+          }
+        },
+        "nutrition_tips": [
+          "Easy-to-digest foods",
+          "Warm meals may be easier",
+          "Consider digestive enzymes if needed",
+          "Small portions of calorie-dense foods"
+        ]
+      }
+    }
+  },
+
+  "stress_relief": {
+    "all": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Yin Yoga (30 mins: Dragon pose, saddle, supported fish) + Breathing (5 mins alternate nostril)",
+            "benefits": "Releases connective tissue stress",
+            "tips": "Use props for full relaxation"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Tai Chi (25 mins beginner flow)",
+            "benefits": "Calms nervous system with movement",
+            "tips": "Focus on fluid transitions"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Forest Walk (30 mins in nature, no devices)",
+            "benefits": "Grounding through nature connection",
+            "tips": "Engage all senses during walk"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Guided Meditation (20 mins body scan)",
+            "benefits": "Develops interoceptive awareness",
+            "tips": "Practice same time daily"
+          },
+          {
+            "day": "Friday",
+            "routine": "Stretching with Calm Music (20 mins focus on tight areas)",
+            "benefits": "Combines auditory and physical relaxation",
+            "tips": "60 bpm music enhances calm"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Dance or Free Movement (20 mins to favorite music)",
+            "benefits": "Joyful expression releases tension",
+            "tips": "No rules or expectations"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional journaling",
+            "benefits": "Integrates weekly progress",
+            "tips": "Notice stress reduction patterns"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-2": {
+            "focus": "Mental reset priority",
+            "details": "Establish daily relaxation practice. Movement secondary."
+          },
+          "phase_2_weeks_3-4": {
+            "focus": "Mind-body connection",
+            "details": "Add short walks or Tai Chi flows. Notice stress responses."
+          },
+          "phase_3_weeks_5-8": {
+            "focus": "Integrated routine",
+            "details": "Combine movement and meditation. Add rhythmic strength."
+          },
+          "phase_4_weeks_9+": {
+            "focus": "Sustainable management",
+            "details": "Personalized stress toolkit. Track triggers and reliefs."
+          }
+        },
+        "nutrition_tips": [
+          "Magnesium-rich foods (leafy greens, nuts)",
+          "Warm herbal teas for relaxation",
+          "Omega-3s for nervous system support",
+          "Regular meal times to prevent stress"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Yoga Nidra (20 min guided)",
+            "benefits": "Deep nervous system reset",
+            "tips": "Do in quiet, dark space"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Breathing (5 mins 4-4-4 pattern) + Visualization (5 mins peaceful scene)",
+            "benefits": "Activates relaxation response",
+            "tips": "Practice upon waking"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Complete rest with nature sounds",
+            "benefits": "Sensory break day",
+            "tips": "Limit digital stimulation"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Gratitude Meditation (10 mins focusing on small joys)",
+            "benefits": "Shifts nervous system state",
+            "tips": "Keep gratitude journal nearby"
+          },
+          {
+            "day": "Friday",
+            "routine": "Soothing Music Walk (10 mins slow pace with calming playlist)",
+            "benefits": "Gentle movement with auditory calm",
+            "tips": "Focus on breath and music"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Complete rest with optional hand massage",
+            "benefits": "Full restoration day",
+            "tips": "Epsom salt foot soak if possible"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with intention setting",
+            "benefits": "Prepares mind for week ahead",
+            "tips": "Keep expectations gentle"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-4": {
+            "focus": "Cortisol reduction priority",
+            "details": "Minimum 3 rest days. Gentle practices only."
+          },
+          "phase_2_weeks_5-8": {
+            "focus": "Subtle activation",
+            "details": "Add short walks or seated yoga. Monitor stress signals."
+          },
+          "phase_3_weeks_9-12": {
+            "focus": "Integrated restoration",
+            "details": "Light nature-based movement. Continue daily breathing."
+          },
+          "phase_4_weeks_13+": {
+            "focus": "Sustainable balance",
+            "details": "Personalized routine based on response. Track progress."
+          }
+        },
+        "nutrition_tips": [
+          "Warm, easy-to-digest meals",
+          "Chamomile or passionflower tea",
+          "Protein with tryptophan (turkey, pumpkin seeds)",
+          "Regular small meals to prevent stress"
+        ]
+      }
+    }
+  },
+
+  "hormonal_balance": {
+    "all": {
+      "low_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Hip Opening Yoga (30 mins: Pigeon, frog, butterfly) + Walk (15 mins)",
+            "benefits": "Supports reproductive circulation",
+            "tips": "Use props for deep release"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Strength (Glutes + Back - 3 rounds: 10 hip thrusts, 12 bent-over rows, 15 supermans)",
+            "benefits": "Builds hormone-supportive muscle",
+            "tips": "Squeeze at top of movement"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Pelvic Floor (10 mins: Kegels, hip circles) + Breathwork (5 mins diaphragmatic)",
+            "benefits": "Improves core hormonal circulation",
+            "tips": "Focus on relaxation after contraction"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Power Yoga (40 mins: Emphasizing twists and inversions)",
+            "benefits": "Stimulates endocrine system",
+            "tips": "Modify inversions as needed"
+          },
+          {
+            "day": "Friday",
+            "routine": "Pilates (Core + Stability - 30 mins: Hundreds, leg circles, side planks)",
+            "benefits": "Strengthens deep core muscles",
+            "tips": "Engage TVA throughout"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Resistance Band (Glutes - 3 rounds: 10 banded squats, 12 clamshells, 15 fire hydrants)",
+            "benefits": "Targets hormone-balancing muscles",
+            "tips": "Slow tempo for mind-muscle connection"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional castor oil pack",
+            "benefits": "Allows full recovery",
+            "tips": "Track cycle symptoms if applicable"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-2": {
+            "focus": "Balance-focused foundation",
+            "details": "Mobility and strength basics. Learn proper form."
+          },
+          "phase_2_weeks_3-4": {
+            "focus": "Cycle awareness",
+            "details": "Adjust intensity with cycle phases if applicable."
+          },
+          "phase_3_weeks_5-8": {
+            "focus": "Tempo training",
+            "details": "Use slow eccentrics for hormone response."
+          },
+          "phase_4_weeks_9+": {
+            "focus": "Periodization",
+            "details": "Vary intensity weekly. Track hormonal symptoms."
+          }
+        },
+        "nutrition_tips": [
+          "Cruciferous veggies daily",
+          "Healthy fats for hormone production",
+          "Seed cycling if desired",
+          "Liver-supportive foods (beets, dandelion)"
+        ]
+      },
+      "high_pcos": {
+        "weekly_plan": [
+          {
+            "day": "Monday",
+            "routine": "Hip Rolls (5 mins) + Breathing (5 mins: Inhale expansion, exhale contraction)",
+            "benefits": "Gentle reproductive circulation",
+            "tips": "Do lying on back with knees bent"
+          },
+          {
+            "day": "Tuesday",
+            "routine": "Seated Stretching (10 mins: Focus on hips and inner thighs)",
+            "benefits": "Releases tension in hormone-rich areas",
+            "tips": "Use cushion for comfort"
+          },
+          {
+            "day": "Wednesday",
+            "routine": "Rest or Light Core (5 mins pelvic tilts)",
+            "benefits": "Prevents overstimulation",
+            "tips": "Warm compress if cramping"
+          },
+          {
+            "day": "Thursday",
+            "routine": "Yin Yoga (20 mins: Supported child's pose, reclined bound angle)",
+            "benefits": "Deep connective tissue release",
+            "tips": "Use all props needed"
+          },
+          {
+            "day": "Friday",
+            "routine": "Mobility Focus (10 mins: Cat-cow, seated twists, ankle circles)",
+            "benefits": "Maintains joint health",
+            "tips": "Move within pain-free range"
+          },
+          {
+            "day": "Saturday",
+            "routine": "Resistance Band Seated Legs (2 rounds: 10 seated marches, 12 ankle dorsiflexion, 15 toe taps)",
+            "benefits": "Gentle lower body activation",
+            "tips": "Focus on quality not quantity"
+          },
+          {
+            "day": "Sunday",
+            "routine": "Complete rest with optional meditation",
+            "benefits": "Full recovery day",
+            "tips": "Notice any hormonal patterns"
+          }
+        ],
+        "progression": {
+          "phase_1_weeks_1-4": {
+            "focus": "Gentle hormone support",
+            "details": "Minimal movement. Focus on circulation and breathing."
+          },
+          "phase_2_weeks_5-8": {
+            "focus": "Subtle activation",
+            "details": "Add 1-2 dynamic stretches weekly. Monitor symptoms."
+          },
+          "phase_3_weeks_9-12": {
+            "focus": "Supported strength",
+            "details": "Begin light resistance with chair support."
+          },
+          "phase_4_weeks_13+": {
+            "focus": "Sustainable routine",
+            "details": "Personalize based on hormonal response. Track changes."
+          }
+        },
+        "nutrition_tips": [
+          "Anti-inflammatory foods",
+          "Even blood sugar management",
+          "Consider spearmint tea",
+          "Liver-supportive herbs if tolerated"
+        ]
+      }
+    }
+  }
+}

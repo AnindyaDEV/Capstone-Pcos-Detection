@@ -1,0 +1,145 @@
+/* static/css/nutrition.css */
+:root {
+  --primary-color: #9c27b0; /* Purple */
+  --secondary-color: #03a9f4; /* Light blue */
+  --accent-color: #ff4081; /* Pink */
+  --light-color: #f8f9fc;
+  --dark-color: #343a40;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nutrition-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+  font-weight: 700;
+}
+
+.nutrition-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.nutrition-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  border-bottom: none;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-container .input-group-text {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #7b1fa2;
+}
+
+.macro-form .form-control,
+.macro-form .form-select {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.macro-form .form-control:focus,
+.macro-form .form-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.25rem rgba(255, 64, 129, 0.25);
+}
+
+.meal-plan-container {
+  background-color: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.day-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.meal-item {
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.meal-item:hover {
+  transform: translateX(5px);
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nutrition-container {
+    padding: 1rem;
+  }
+  
+  .header-section {
+    padding: 1.5rem 0;
+  }
+  
+  .nutrition-card {
+    border-radius: 10px;
+  }
+}
+.toast {
+  width: 350px;
+  height: 100px;
+  transition: transform 0.3s ease;
+}
+.toast.show {
+  transform: translateX(0);
+}
+.toast:not(.show) {
+  transform: translateX(100%);
+}
+#saveStatus {
+  min-height: 60px; /* Prevent layout shift when messages appear */
+}
+
+#viewPlanBtn {
+  transition: opacity 0.3s ease;
+}

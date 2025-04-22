@@ -1,0 +1,7 @@
+Flask
+scikit-learn
+numpy
+opencv-python
+xgboost
+tensorflow
+keras

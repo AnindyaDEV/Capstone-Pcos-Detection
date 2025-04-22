@@ -1,0 +1,275 @@
+:root {
+  --pcos-primary: #8e44ad;
+  --pcos-primary-light: rgba(142, 68, 173, 0.1);
+  --pcos-secondary: #9b59b6;
+  --pcos-accent: #e84393;
+  --pcos-light: #f8f9fa;
+  --pcos-dark: #343a40;
+  --pcos-text: #4a4a4a;
+  --weight-loss: #6c5ce7;
+  --insulin-resistance: #00b894;
+  --stress-relief: #fd79a8;
+  --hormonal-balance: #0984e3;
+  --low-energy: #fdcb6e;
+}
+
+body {
+  background-color: #faf5ff;
+  font-family: 'Poppins', sans-serif;
+  color: var(--pcos-text);
+  line-height: 1.6;
+}
+
+.pcos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.pcos-header {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.header-icon {
+  color: var(--pcos-primary);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: var(--pcos-primary-light);
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.pcos-header h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--pcos-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--pcos-secondary);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.selection-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(142, 68, 173, 0.1);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(142, 68, 173, 0.15);
+}
+
+.selection-card label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--pcos-primary);
+}
+
+.selection-card label i {
+  color: var(--pcos-secondary);
+}
+
+.selection-card .form-select {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  background-color: var(--pcos-light);
+}
+
+.selection-card .form-select:focus {
+  border-color: var(--pcos-primary);
+  box-shadow: 0 0 0 0.25rem rgba(142, 68, 173, 0.15);
+}
+
+.loading-spinner {
+  display: none;
+}
+
+.loading-spinner .spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid rgba(142, 68, 173, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--pcos-primary);
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.plan-results {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(142, 68, 173, 0.1);
+  margin-top: 1rem;
+  border: 1px solid rgba(142, 68, 173, 0.15);
+}
+
+.weekly-plan {
+  margin-bottom: 2rem;
+}
+
+.weekly-plan h4 {
+  color: var(--pcos-primary);
+  border-bottom: 2px solid var(--pcos-primary-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.day-plan {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-left: 4px solid var(--pcos-primary);
+  background-color: #faf5ff;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.day-plan:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(142, 68, 173, 0.1);
+}
+
+.day-plan h5 {
+  color: var(--pcos-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.routine-details p {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.routine-details p:before {
+  content: "•";
+  color: var(--pcos-accent);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.progression-plan {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.progression-plan h4 {
+  color: var(--pcos-primary);
+  border-bottom: 2px solid var(--pcos-primary-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.progression-item {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.progression-item:before {
+  content: "•";
+  color: var(--pcos-accent);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.progression-item strong {
+  color: var(--pcos-dark);
+}
+
+.nutrition-planner-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(142, 68, 173, 0.1);
+  margin-top: 2rem;
+  border: 1px solid rgba(142, 68, 173, 0.15);
+}
+
+.nutrition-planner-card h3 {
+  color: var(--pcos-primary);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.nutrition-planner-card p {
+  color: var(--pcos-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.nutrition-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nutrition-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--pcos-primary-light);
+  color: var(--pcos-primary);
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(142, 68, 173, 0.2);
+}
+
+.nutrition-link i {
+  margin-right: 0.5rem;
+}
+
+.nutrition-link:hover {
+  background: var(--pcos-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(142, 68, 173, 0.2);
+}
+
+@media (max-width: 768px) {
+  .pcos-container {
+    padding: 1rem;
+  }
+  
+  .selection-card {
+    padding: 1rem;
+  }
+  
+  .day-plan {
+    padding: 1rem;
+  }
+
+  .nutrition-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nutrition-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
